@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    Rigidbody playerBody;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    public float jumpSpeed = 10.0f;
+    public float jumptHeight = 10.0f;
+    private float gravityValue = 9.81f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerBody = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {   
+        // Get the Player's velocity
+        Vector3 velocity = playerBody.velocity;
+
+        // When the "Jump" key or space bar is pressed
+        if (Input.GetButtonDown("Jump"))
+        {
+            // The Player jumps at a designated height
+            velocity.y += Mathf.Sqrt(jumptHeight * 2 * gravityValue);
+        }
+
+        // Reassign the velocity value to the Player's rigidbody
+        playerBody.velocity = velocity;
+
+        // When the player falls
+        if (playerBody.velocity.y < 0)
+        {
+            // Accelerate the fall in this particular frame
+            playerBody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        
+        // If we're jumping upward and not pressing the "Jump" button
+        } else if (playerBody.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            // Accelerate the fall at a slower speed in this particular frame
+            playerBody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+    }
+}
