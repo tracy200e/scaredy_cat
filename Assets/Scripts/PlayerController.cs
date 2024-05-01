@@ -20,29 +20,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        // Get the Player's velocity
+        // get the Player's velocity
         Vector3 velocity = playerBody.velocity;
 
-        // When the "Jump" key or space bar is pressed
+        // when the "Jump" key or space bar is pressed
         if (Input.GetButtonDown("Jump"))
         {
             // The Player jumps at a designated height
             velocity.y += Mathf.Sqrt(jumptHeight * 2 * gravityValue);
         }
 
-        // Reassign the velocity value to the Player's rigidbody
+        // reassign the velocity value to the Player's rigidbody
         playerBody.velocity = velocity;
 
-        // When the player falls
+        // when the player falls
         if (playerBody.velocity.y < 0)
         {
-            // Accelerate the fall in this particular frame
+            // accelerate the fall in this particular frame
             playerBody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         
-        // If we're jumping upward and not pressing the "Jump" button
+        // if we're jumping upward and not pressing the "Jump" button
         } else if (playerBody.velocity.y > 0 && !Input.GetButton("Jump"))
         {
-            // Accelerate the fall at a slower speed in this particular frame
+            // accelerate the fall at a slower speed in this particular frame
             playerBody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }

@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 862538219}
   - component: {fileID: 862538218}
   - component: {fileID: 862538217}
+  - component: {fileID: 862538221}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -323,6 +324,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &862538221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862538216}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fcd0fdc97754d49816c8686c0221cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 0.1
+  renderer: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +466,7 @@ MonoBehaviour:
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   jumpSpeed: 10
-  jumptHeight: 2
+  jumptHeight: 10
 --- !u!54 &1221555646
 Rigidbody:
   m_ObjectHideFlags: 0
