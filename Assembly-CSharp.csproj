@@ -63,6 +63,7 @@
     <Compile Include="Assets/Resources/Scripts/Alien.cs" />
     <Compile Include="Assets/Power Ups/Scripts/PlayerJumpTest.cs" />
     <Compile Include="Assets/Resources/Scripts/Cactus.cs" />
+    <Compile Include="Assets/Resources/Scripts/CloudSpawner.cs" />
     <Compile Include="Assets/Resources/Scripts/SpikyTurtle.cs" />
     <Compile Include="Assets/Resources/Scripts/BackgroundScroller.cs" />
     <Compile Include="Assets/Resources/Scripts/PowerUpSpawner.cs" />

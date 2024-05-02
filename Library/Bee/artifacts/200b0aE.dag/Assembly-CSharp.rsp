@@ -360,6 +360,7 @@
 "Assets/Resources/Scripts/BackgroundScroller.cs"
 "Assets/Resources/Scripts/Cactus.cs"
 "Assets/Resources/Scripts/ChestMonster.cs"
+"Assets/Resources/Scripts/CloudSpawner.cs"
 "Assets/Resources/Scripts/FirstAid.cs"
 "Assets/Resources/Scripts/Heart.cs"
 "Assets/Resources/Scripts/MonsterSpawner.cs"
