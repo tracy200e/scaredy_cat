@@ -6,14 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     // variables for Player's body movement
     Rigidbody playerBody;
+    Vector3 velocity;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public float jumpSpeed = 10.0f;
     public float jumptHeight = 10.0f;
+    public float runSpeed = 10.0f;
     private float gravityValue = 9.81f;
+    private float horizontal;
 
-
+    // game score
     public int powerUpTotal = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {   
         // get the Player's velocity
-        Vector3 velocity = playerBody.velocity;
+        velocity = playerBody.velocity;
 
         /// Reference: https://youtu.be/7KiK0Aqtmzc?si=02e46dB4F17G6vmZ
         // when the "Jump" key or space bar is pressed
@@ -48,12 +52,15 @@ public class PlayerController : MonoBehaviour
         {
             // accelerate the fall at a slower speed in this particular frame
             playerBody.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        } else
+        {
+            velocity.y = 0;
         }
 
-        // if (powerUpTotal > 2)
-        // {
-        //     transform.Translate(Vector3.forward * Time.deltaTime);
-        // }
+        if (powerUpTotal > 10)
+        {
+            transform.Translate(Vector3.right * Time.deltaTime);
+        }
     }
 
     public void ConsumePowerUp() {
@@ -62,4 +69,12 @@ public class PlayerController : MonoBehaviour
         GetComponent<AudioSource>().Play();
         GetComponent<ParticleSystem>().Play();
     }
+
+    // private void OnCollisionEnter(Collision collider)
+    // {
+    //     var speed = velocity.magnitude;
+    //     var direction = Vector3.Reflect(velocity.normalized, collider.contacts[0].normal);
+
+    //     playerBody.velocity = direction * Mathf.Max(speed, 0f);
+    // }
 }
