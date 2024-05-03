@@ -28,7 +28,19 @@ public class Star : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        other.transform.GetComponent<PlayerController>().ConsumePowerUp();
-        Destroy(gameObject);
+        if (other.CompareTag("Player"))
+        {
+            PlayerController playerController = other.transform.GetComponent<PlayerController>();
+            
+            if (playerController != null)
+            {
+                playerController.ConsumePowerUp();
+            }
+            Destroy(gameObject);
+        } 
+        else
+        {
+            Debug.LogError("PlayerController component cannot be found on the collided object.");
+        }        
     }
 }

@@ -33,7 +33,7 @@ public class PowerupSpawner : MonoBehaviour
             }
             
             // pause 7-10 seconds until the next monster spawns
-            yield return new WaitForSeconds(Random.Range(7, 10));
+            yield return new WaitForSeconds(Random.Range(3, 8));
         }
     }
 }

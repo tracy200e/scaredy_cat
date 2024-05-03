@@ -522,7 +522,7 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
@@ -538,8 +538,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4544219117696442}
   - component: {fileID: 95706204029656638}
-  - component: {fileID: 6987269323403887733}
   - component: {fileID: -4383579143914033742}
+  - component: {fileID: 7983640550889683205}
   m_Layer: 0
   m_Name: SpikyTurtle
   m_TagString: Untagged
@@ -585,19 +585,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6987269323403887733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524411113276028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93e40560056d9448f885374ef58122f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 95706204029656638}
 --- !u!54 &-4383579143914033742
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -624,7 +611,20 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!114 &7983640550889683205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524411113276028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f5911be8dc1484ea726cdf3ad230d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95706204029656638}
 --- !u!1 &1532652994627396
 GameObject:
   m_ObjectHideFlags: 0

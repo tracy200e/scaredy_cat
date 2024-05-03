@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikyTurtle : MonoBehaviour
+public class GroundMonster : MonoBehaviour
 {
     public Animator animator;
     public static float speed = 1.0f;
@@ -10,7 +10,7 @@ public class SpikyTurtle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -19,17 +19,24 @@ public class SpikyTurtle : MonoBehaviour
         if (transform.position.x < -25)
         {
             Destroy(gameObject);
-        } else 
+        } else
         {
             transform.Translate(-speed * Time.deltaTime, 0, 0, Space.World);
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Bridge"))
         {
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Hit");
             animator.SetTrigger("Hit");
+            Destroy(gameObject);
         }
     }
 }

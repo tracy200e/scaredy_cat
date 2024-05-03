@@ -26,7 +26,7 @@ public class MonsterSpawner : MonoBehaviour
             Instantiate(prefabs[Random.Range(0, prefabs.Length)], new Vector3(20, -3, -5), 
                 Quaternion.Euler(0f, -90f, 0f));
 
-            // pause 3-7 seconds until the next monster spawns
+            // pause 7-10 seconds until the next monster spawns
             yield return new WaitForSeconds(Random.Range(7,10));
         }
     }
