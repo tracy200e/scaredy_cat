@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
-    public static float speed = .1f;
+    public static float speed = 0.05f;
     public Renderer renderer;
 
     // Start is called before the first frame update

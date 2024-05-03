@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         // get the Player's velocity
         Vector3 velocity = playerBody.velocity;
 
+        /// Reference: https://youtu.be/7KiK0Aqtmzc?si=02e46dB4F17G6vmZ
         // when the "Jump" key or space bar is pressed
         if (Input.GetButtonDown("Jump"))
         {

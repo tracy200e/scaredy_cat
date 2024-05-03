@@ -75,6 +75,8 @@
     <Compile Include="Assets/Resources/Scripts/ChestMonster.cs" />
     <Compile Include="Assets/Resources/Scripts/MonsterSpawner.cs" />
     <Compile Include="Assets/Resources/Scripts/FirstAid.cs" />
+    <Compile Include="Assets/Resources/Scripts/FloorBed.cs" />
+    <Compile Include="Assets/Resources/Scripts/PathGenerator.cs" />
     <Compile Include="Assets/Power Ups/Scripts/SlimeMoveTest.cs" />
     <Compile Include="Assets/Power Ups/Scripts/OpenAnimTest.cs" />
   </ItemGroup>
