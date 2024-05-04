@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+    public static int gameLevel = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("Play");
+            gameLevel++; 
         }
     }
 }

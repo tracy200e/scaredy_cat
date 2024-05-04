@@ -364,6 +364,7 @@
 "Assets/Resources/Scripts/FloorBed.cs"
 "Assets/Resources/Scripts/GroundMonster.cs"
 "Assets/Resources/Scripts/Heart.cs"
+"Assets/Resources/Scripts/LevelManager.cs"
 "Assets/Resources/Scripts/LoadPlaySceneOnInput.cs"
 "Assets/Resources/Scripts/MonsterSpawner.cs"
 "Assets/Resources/Scripts/PathGenerator.cs"
