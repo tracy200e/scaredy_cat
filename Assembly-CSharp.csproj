@@ -95,6 +95,7 @@
     <Compile Include="Assets/Resources/Scripts/Heart.cs" />
     <Compile Include="Assets/Resources/Scripts/PlayerController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexZoom.cs" />
+    <Compile Include="Assets/Resources/Scripts/Enemy.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark02.cs" />
     <Compile Include="Assets/Power Ups/Scripts/RotateScript.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" />
