@@ -5,7 +5,7 @@ using UnityEngine;
 public class PathGenerator : MonoBehaviour
 {
     public GameObject[] prefabs;
-    public static float speed = 0.5f;
+    public static int speedFactor = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class PathGenerator : MonoBehaviour
             Instantiate(prefabs[Random.Range(0, prefabs.Length)], new Vector3(19, -8, -5), 
                     Quaternion.identity);
 
-            yield return new WaitForSeconds(42);
+            yield return new WaitForSeconds(42f / speedFactor);
         }
     }
 }

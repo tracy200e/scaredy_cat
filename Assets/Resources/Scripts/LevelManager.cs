@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public Text level;
+    public static int gameLevel = 1;
 
     void Awake()
     {
         level = GetComponent<Text>();
-
-        level.text = "Level " + Enemy.gameLevel;
+        level.text = "Level " + gameLevel;
     }
 
     // Update is called once per frame

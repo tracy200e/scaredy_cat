@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FloorBed : MonoBehaviour
 {
+    public static float speed = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class FloorBed : MonoBehaviour
             Destroy(gameObject);
         } else
         {
-            transform.Translate(-PathGenerator.speed * Time.deltaTime, 0, 0);
+            transform.Translate(-PathGenerator.speedFactor * speed * Time.deltaTime, 0, 0);
         }
     }
 }

@@ -14,15 +14,19 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 10.0f;
     private float gravityValue = 9.81f;
     private float horizontal;
+    private bool hasTurnedAround = false;
+
+    // enemy's position
+    public static float ENEMY_POSITION = 12f;
 
     // game score
     public static int powerUpTotal;
 
     // screen boundaries
-    private static float LEVEL_CEILING = 9;
-    private static float LEVEL_BELOW_GROUND = -9.5;
-    private static float LEVEL_LEFT_EDGE = -12.5;
-    private static float LEVEL_RIGHT_EDGE = 15.5;
+    private static float LEVEL_CEILING = 9f;
+    private static float LEVEL_BELOW_GROUND = -9.5f;
+    private static float LEVEL_LEFT_EDGE = -12.5f;
+    private static float LEVEL_RIGHT_EDGE = 15.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +34,11 @@ public class PlayerController : MonoBehaviour
         playerBody = GetComponent<Rigidbody>();
         powerUpTotal = 0;
         // animator = GetComponent<Animator>();
+    }
+
+    void Awake()
+    {
+        
     }
 
     // Update is called once per frame
@@ -45,9 +54,13 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(LEVEL_RIGHT_EDGE, transform.position.y, transform.position.z);
         }
 
+        
+
+        Debug.Log("Rotation y value: " + transform.rotation.y);
+
         if (transform.position.y < LEVEL_BELOW_GROUND)
         {
-            GameOver();
+            LoseGame();
         }
 
         // get the Player's velocity
@@ -66,6 +79,16 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y *= 0.2f;
             transform.position = new Vector3(transform.position.x, 6, -5);
+        }
+
+        if (transform.position.x < LEVEL_RIGHT_EDGE && transform.position.x > ENEMY_POSITION && !hasTurnedAround)
+        {
+            transform.localEulerAngles = new Vector3(0, -270, 0);
+            hasTurnedAround = true;
+        }
+        else if (transform.position.x < ENEMY_POSITION)
+        {
+            hasTurnedAround = false;
         }
 
         // reassign the velocity value to the Player's rigidbody
@@ -90,14 +113,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ConsumePowerUp() {
+    public void ConsumePowerUp() {
         powerUpTotal += 1;
-        playerBody.velocity += Vector3.right * 1.5;
+        playerBody.velocity += Vector3.right * 1.5f;
         GetComponent<AudioSource>().Play();
         GetComponent<ParticleSystem>().Play();
     }
 
-    void LoseGame() {
+    public void LoseGame() {
         SceneManager.LoadScene("GameOver");
         powerUpTotal = 0;
     }
