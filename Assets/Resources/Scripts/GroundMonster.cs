@@ -25,14 +25,14 @@ public class GroundMonster : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bridge"))
+        if (other.CompareTag("Bridge"))
         {
             Destroy(gameObject);
         }
 
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Hit");
             animator.SetTrigger("Hit");

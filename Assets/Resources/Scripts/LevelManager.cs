@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Text))]
 public class LevelManager : MonoBehaviour
 {
-    private TMP_Text level;
+    public Text level;
 
     void Awake()
     {
-        level = GetComponent<TMP_Text>();
+        level = GetComponent<Text>();
 
         level.text = "Level " + Enemy.gameLevel;
     }

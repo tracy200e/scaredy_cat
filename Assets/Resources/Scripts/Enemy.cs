@@ -29,7 +29,8 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene("Play");
-            gameLevel++; 
+            gameLevel++;
+            PlayerController.powerUpTotal = 0;
         }
     }
 }

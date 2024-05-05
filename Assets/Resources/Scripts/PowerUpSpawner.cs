@@ -28,7 +28,7 @@ public class PowerupSpawner : MonoBehaviour
             // instantiate a random powerups past the right the right edge of the screen
             for (int i = 0; i < powerUpsThisRow; i++)
             {
-                Instantiate(prefabs[Random.Range(0, prefabs.Length)], new Vector3(20, Random.Range(5, -2), -5), 
+                Instantiate(prefabs[Random.Range(0, prefabs.Length)], new Vector3(5, Random.Range(5, -2), -5), 
                     Quaternion.Euler(0f, -90f, 0f));
             }
             
