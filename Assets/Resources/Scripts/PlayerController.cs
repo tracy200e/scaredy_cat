@@ -18,7 +18,11 @@ public class PlayerController : MonoBehaviour
     // game score
     public static int powerUpTotal;
 
-    private static float LEVEL_CEILING = 6;
+    // screen boundaries
+    private static float LEVEL_CEILING = 9;
+    private static float LEVEL_BELOW_GROUND = -9.5;
+    private static float LEVEL_LEFT_EDGE = -12.5;
+    private static float LEVEL_RIGHT_EDGE = 15.5;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        if (transform.position.x < LEVEL_LEFT_EDGE)
+        {
+            LoseGame();
+        }
+
+        if (transform.position.x > LEVEL_RIGHT_EDGE)
+        {
+            transform.position = new Vector3(LEVEL_RIGHT_EDGE, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.y < LEVEL_BELOW_GROUND)
+        {
+            GameOver();
+        }
+
         // get the Player's velocity
         velocity = playerBody.velocity;
 
@@ -69,17 +88,17 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = 0;
         }
-
-        if (transform.position.y < -8)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
     }
 
-    public void ConsumePowerUp() {
+    void ConsumePowerUp() {
         powerUpTotal += 1;
-        playerBody.velocity += Vector3.right * 2;
+        playerBody.velocity += Vector3.right * 1.5;
         GetComponent<AudioSource>().Play();
         GetComponent<ParticleSystem>().Play();
+    }
+
+    void LoseGame() {
+        SceneManager.LoadScene("GameOver");
+        powerUpTotal = 0;
     }
 }

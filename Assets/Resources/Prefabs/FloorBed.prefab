@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BridgeOverRiver
       objectReference: {fileID: 0}
+    - target: {fileID: 8902720448213161621, guid: 9a1584b8435784bfbbd35597eb2486fd, type: 3}
+      propertyPath: m_TagString
+      value: Bridge
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
