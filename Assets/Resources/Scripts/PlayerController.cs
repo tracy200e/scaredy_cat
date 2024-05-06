@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     // variables for Player's body movement
     Rigidbody playerBody;
     public Vector3 velocity;
+    Ray ray;
     public float fallMultiplier = 2.0f;
     public float lowJumpMultiplier = 1.5f;
     public float jumptHeight = 2.0f;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     // enemy's position
     public static float ENEMY_POSITION = 12f;
+    public LayerMask layersToHit = 1<<4;
 
     // game score
     public static int powerUpTotal;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         playerBody = GetComponent<Rigidbody>();
         powerUpTotal = 0;
+
         // animator = GetComponent<Animator>();
     }
 
@@ -53,10 +56,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(LEVEL_RIGHT_EDGE, transform.position.y, transform.position.z);
         }
-
-        
-
-        Debug.Log("Rotation y value: " + transform.rotation.y);
 
         if (transform.position.y < LEVEL_BELOW_GROUND)
         {
@@ -123,5 +122,15 @@ public class PlayerController : MonoBehaviour
     public void LoseGame() {
         SceneManager.LoadScene("GameOver");
         powerUpTotal = 0;
+    }
+
+    void detectMonster()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(gameObject.transform.position, transform.TransformDirection(Vector3.down), out hit, 2, layersToHit))
+        {
+            Debug.Log("Ghost hit something at " + hit.distance + "distance");
+        }
     }
 }

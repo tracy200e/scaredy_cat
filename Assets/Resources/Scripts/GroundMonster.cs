@@ -36,7 +36,15 @@ public class GroundMonster : MonoBehaviour
         {
             Debug.Log("Hit");
             animator.SetTrigger("Hit");
-            Destroy(gameObject);
+            StartCoroutine(Die());
+            PlayerController.powerUpTotal -= 1;
+            
         }
+    }
+
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }

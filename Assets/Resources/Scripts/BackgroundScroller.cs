@@ -22,6 +22,5 @@ public class BackgroundScroller : MonoBehaviour
 
         // scrolling effect on one axis
         renderer.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-        renderer.material.SetTextureOffset("_BumpMap", new Vector2(offset, 0));
     }
 }
