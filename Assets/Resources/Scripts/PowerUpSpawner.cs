@@ -12,12 +12,6 @@ public class PowerupSpawner : MonoBehaviour
         StartCoroutine(SpawnPowerups());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator SpawnPowerups()
     {
         while (true) {

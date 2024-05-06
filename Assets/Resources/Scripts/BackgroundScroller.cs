@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Reference: https://cs50.harvard.edu/extension/games/2024/spring/#helicopter-game-3d
 public class BackgroundScroller : MonoBehaviour
 {
     public static float speed = 0.05f;

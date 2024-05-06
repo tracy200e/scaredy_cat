@@ -5,17 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LoadPlaySceneOnInput : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        // if the Player presses the 'Enter' key
         if (Input.GetAxis("Submit") == 1)
         {
+            // take the Player to the Play Scene
             SceneManager.LoadScene("Play");
         }
     }

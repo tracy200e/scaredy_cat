@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     // variables for Player's body movement
     Rigidbody playerBody;
     public Vector3 velocity;
-    Ray ray;
     public float fallMultiplier = 2.0f;
     public float lowJumpMultiplier = 1.5f;
     public float jumptHeight = 2.0f;
@@ -35,30 +34,29 @@ public class PlayerController : MonoBehaviour
     {
         playerBody = GetComponent<Rigidbody>();
         powerUpTotal = 0;
-
-        // animator = GetComponent<Animator>();
-    }
-
-    void Awake()
-    {
-        
     }
 
     // Update is called once per frame
     void Update()
     {   
+        // if the Player falls behind
         if (transform.position.x < LEVEL_LEFT_EDGE)
         {
+            // the Player loses the game
             LoseGame();
         }
 
+        // if the Player goes over the right edge of the screen
         if (transform.position.x > LEVEL_RIGHT_EDGE)
         {
+            // the Player does not go over
             transform.position = new Vector3(LEVEL_RIGHT_EDGE, transform.position.y, transform.position.z);
         }
 
+        // if the Player falls below ground
         if (transform.position.y < LEVEL_BELOW_GROUND)
         {
+            // the Player loses the game
             LoseGame();
         }
 
@@ -74,20 +72,17 @@ public class PlayerController : MonoBehaviour
             velocity.y += Mathf.Sqrt(jumptHeight * 2 * gravityValue);
         }
         
+        // the Player's jump speed is dampened when they hit the top of the screen
         if (transform.position.y > LEVEL_CEILING && velocity.y > 0)
         {
             velocity.y *= 0.2f;
             transform.position = new Vector3(transform.position.x, 6, -5);
         }
-
-        if (transform.position.x < LEVEL_RIGHT_EDGE && transform.position.x > ENEMY_POSITION && !hasTurnedAround)
+        // if the Player passes the Target
+        if (transform.position.x > ENEMY_POSITION + 2 && velocity.x > -1.0f)
         {
-            transform.localEulerAngles = new Vector3(0, -270, 0);
-            hasTurnedAround = true;
-        }
-        else if (transform.position.x < ENEMY_POSITION)
-        {
-            hasTurnedAround = false;
+            // make the Player fall behind a little
+            velocity = velocity - Vector3.right * 0.4f;
         }
 
         // reassign the velocity value to the Player's rigidbody
@@ -113,24 +108,24 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ConsumePowerUp() {
+
+        // increase score
         powerUpTotal += 1;
+
+        // increase the Player's speed
         playerBody.velocity += Vector3.right * 1.5f;
+
+        // play sound and particle effect
         GetComponent<AudioSource>().Play();
         GetComponent<ParticleSystem>().Play();
     }
 
     public void LoseGame() {
+
+        // switch to the Game Over Scene
         SceneManager.LoadScene("GameOver");
+
+        // restore the score count
         powerUpTotal = 0;
-    }
-
-    void detectMonster()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(gameObject.transform.position, transform.TransformDirection(Vector3.down), out hit, 2, layersToHit))
-        {
-            Debug.Log("Ghost hit something at " + hit.distance + "distance");
-        }
     }
 }

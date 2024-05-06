@@ -13,6 +13,6 @@ public class DebugRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 2, Color.red);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 100, Color.red);
     }
 }

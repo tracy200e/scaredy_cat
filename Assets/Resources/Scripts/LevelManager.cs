@@ -11,7 +11,10 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
+        // grab the text component
         level = GetComponent<Text>();
+
+        // update the text input
         level.text = "Level " + gameLevel;
     }
 
